@@ -42,6 +42,9 @@ app.use(express.urlencoded({ extended: true }));
 // Make io accessible in routes
 app.use((req, _res, next) => { req.io = io; next(); });
 
+// Health Check
+app.get('/api/health', (req, res) => res.json({ status: 'Backend is live!' }));
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
