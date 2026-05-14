@@ -32,7 +32,8 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (user) {
-      const socketUrl = import.meta.env.VITE_SOCKET_URL ;
+      const socketUrl = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000';
+      console.log('Connecting to Socket at:', socketUrl);
       const newSocket = io(socketUrl);
       setSocket(newSocket);
       
